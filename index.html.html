@@ -1,0 +1,136 @@
+<html>
+<head>
+  <style>
+    /* Style the login form */
+    .login-form {
+      width: 300px;
+      margin: 0 auto;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Style the input fields */
+    .login-form input[type=text], .login-form input[type=password] {
+      width: 100%;
+      padding: 15px;
+      margin: 5px 0 22px 0;
+      border: none;
+      background: #f1f1f1;
+    }
+
+    /* Style the submit button */
+    .login-form input[type=submit] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 16px 20px;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      opacity: 0.9;
+    }
+
+    /* Style the logout button */
+    .logout-button {
+      width: 300px;
+      margin: 0 auto;
+      font-family: Arial, sans-serif;
+    }
+
+    .logout-button input[type=button] {
+      background-color: #f44336;
+      color: white;
+      padding: 16px 20px;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <!-- Login form -->
+    <form class="login-form" id="login-form" onsubmit="return login()">
+      <h1>Login</h1>
+      <label for="username"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" id="username" required>
+
+      <label for="password"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" id="password" required>
+
+      <input type="submit" value="Login">
+    </form>
+
+    <!-- Logout button -->
+    <div class="logout-button" id="logout-button" style="display:none;">
+      <h1>Welcome, abc123</h1>
+      <input type="button" value="Logout" onclick="logout()">
+	  
+	  <h2>Temp Converter</h2>
+
+	  <p>Enter Temp:</p>
+
+	  <input type="number" id="num1">	  
+	  
+	  <br />
+	  
+	  <p><button onclick="celsiusToFahrenheit()">Celsius To Fahrenheit</button></p>
+	  <p><button onclick="fahrenheitToCelsius()">Fahrenheit To Celsius</button></p>
+	  
+	  <br />
+	  
+	  <p id="result"></p>
+	  
+	  
+	  
+    </div>
+  </div>
+
+  <script>
+    // Function to check the username and password and show the logout button
+    function login() {
+      // Get the username and password from the input fields
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+
+      // Check if the username and password are correct
+      if (username == "abc123" && password == "abc123") {
+        // Hide the login form
+        document.getElementById("login-form").style.display = "none";
+        // Show the logout button
+        document.getElementById("logout-button").style.display = "block";
+        // Return false to prevent the form from submitting
+        return false;
+      } else {
+        // Alert the user that the username or password is wrong
+        alert("Wrong username or password");
+        // Return false to prevent the form from submitting
+        return false;
+      }
+	  
+    }
+
+    // Function to hide the logout button and show the login form
+    function logout() {
+      // Hide the logout button
+      document.getElementById("logout-button").style.display = "none";
+      // Show the login form
+      document.getElementById("login-form").style.display = "block";
+    }
+
+	
+	function celsiusToFahrenheit() {
+	  var celsius = parseInt(document.getElementById("num1").value);
+	  var fahrenheit = (celsius * 9/5) + 32;
+	  
+	  document.getElementById("result").innerHTML = "Result: " + fahrenheit;
+	}
+
+	function fahrenheitToCelsius() {
+	  var fahrenheit = parseInt(document.getElementById("num1").value);	  
+	  var celsius = (fahrenheit - 32) * 5/9;
+	  
+	  document.getElementById("result").innerHTML = "Result: " + celsius;
+	}
+  </script>
+</body>
+</html>
